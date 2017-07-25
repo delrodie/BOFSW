@@ -56,7 +56,7 @@ class Presentation
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="base_image", fileNameProperty="imageName", size="imageSize")
+     * @Vich\UploadableField(mapping="presentation_image", fileNameProperty="imageName", size="imageSize")
      *
      * @var File
      */
@@ -86,8 +86,8 @@ class Presentation
     /**
      * @var string
      *
-     * @Gedmo\Slug(fields={"libelle"})
-     * @ORM\Column(name="slug", type="string", length=75)
+     * @Gedmo\Slug(fields={"titre"})
+     * @ORM\Column(name="slug", type="string", length=255)
      */
     private $slug;
 
@@ -228,5 +228,229 @@ class Presentation
     public function getContenu()
     {
         return $this->contenu;
+    }
+
+    /**
+     * Set imageName
+     *
+     * @param string $imageName
+     *
+     * @return Presentation
+     */
+    public function setImageName($imageName)
+    {
+        $this->imageName = $imageName;
+
+        return $this;
+    }
+
+    /**
+     * Get imageName
+     *
+     * @return string
+     */
+    public function getImageName()
+    {
+        return $this->imageName;
+    }
+
+    /**
+     * Set imageSize
+     *
+     * @param integer $imageSize
+     *
+     * @return Presentation
+     */
+    public function setImageSize($imageSize)
+    {
+        $this->imageSize = $imageSize;
+
+        return $this;
+    }
+
+    /**
+     * Get imageSize
+     *
+     * @return integer
+     */
+    public function getImageSize()
+    {
+        return $this->imageSize;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Presentation
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Presentation
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set publiePar
+     *
+     * @param string $publiePar
+     *
+     * @return Presentation
+     */
+    public function setPubliePar($publiePar)
+    {
+        $this->publiePar = $publiePar;
+
+        return $this;
+    }
+
+    /**
+     * Get publiePar
+     *
+     * @return string
+     */
+    public function getPubliePar()
+    {
+        return $this->publiePar;
+    }
+
+    /**
+     * Set modifiePar
+     *
+     * @param string $modifiePar
+     *
+     * @return Presentation
+     */
+    public function setModifiePar($modifiePar)
+    {
+        $this->modifiePar = $modifiePar;
+
+        return $this;
+    }
+
+    /**
+     * Get modifiePar
+     *
+     * @return string
+     */
+    public function getModifiePar()
+    {
+        return $this->modifiePar;
+    }
+
+    /**
+     * Set publieLe
+     *
+     * @param \DateTime $publieLe
+     *
+     * @return Presentation
+     */
+    public function setPublieLe($publieLe)
+    {
+        $this->publieLe = $publieLe;
+
+        return $this;
+    }
+
+    /**
+     * Get publieLe
+     *
+     * @return \DateTime
+     */
+    public function getPublieLe()
+    {
+        return $this->publieLe;
+    }
+
+    /**
+     * Set modifieLe
+     *
+     * @param \DateTime $modifieLe
+     *
+     * @return Presentation
+     */
+    public function setModifieLe($modifieLe)
+    {
+        $this->modifieLe = $modifieLe;
+
+        return $this;
+    }
+
+    /**
+     * Get modifieLe
+     *
+     * @return \DateTime
+     */
+    public function getModifieLe()
+    {
+        return $this->modifieLe;
+    }
+
+    /**
+     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
+     * of 'UploadedFile' is injected into this setter to trigger the  update. If this
+     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
+     * must be able to accept an instance of 'File' as the bundle will inject one here
+     * during Doctrine hydration.
+     *
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     *
+     * @return Product
+     */
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+
+        if ($image) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return File|null
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
     }
 }
