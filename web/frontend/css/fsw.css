@@ -1,0 +1,66 @@
+.tableau table, td, th{
+	border-color: #ccc;
+	border: solid 1px #ccc;
+}
+
+.theme-overlay2 {
+    background-image: url(../images/photos/parallax-3.jpg);
+    position: relative;
+}
+
+.theme-overlay2:before {
+    content: "";
+    position: absolute;
+    background-color: rgba(221, 137, 29, 0.85);
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.theme-overlay2.overlay-black:before {
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.theme-overlay2.overlay-black-light:before {
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.theme-overlay2.overlay-white:before {
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+.theme-overlay2.overlay-white-deep:before {
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+.theme-overlay2.overlay-theme:before {
+    background-color: rgba(221, 137, 29, 0.96);
+}
+
+.theme-overlay2 h1,
+.theme-overlay2 h2,
+.theme-overlay2 h3,
+.theme-overlay2 h4,
+.theme-overlay2 h5,
+.theme-overlay2 h6 {
+    color: #fff;
+}
+
+.theme-overlay2 p {
+    color: #eee;
+}
+
+.theme-overlay2.overlay-white h1,
+.theme-overlay2.overlay-white h2,
+.theme-overlay2.overlay-white h3,
+.theme-overlay2.overlay-white h4,
+.theme-overlay2.overlay-white h5,
+.theme-overlay2.overlay-white h6 {
+    color: #1c1c1c;
+}
+
+.theme-overlay2.overlay-white p {
+    color: rgba(0, 0, 0, 0.25);
+}

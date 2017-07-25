@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>{% block title %}Fondation Samuel Williams{% endblock %} </title>
+
+<link rel="shortcut icon" href="{{ asset('frontend/images/favicon.ico')}}" type="image/x-icon">
+<link rel="icon" href="{{ asset('frontend/images/favicon.ico')}}" type="image/x-icon">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="{{ asset('frontend/css/style.css')}}" rel="stylesheet">
+<link href="{{ asset('frontend/css/revolution-slider.css')}}" rel="stylesheet">
+<link href="{{ asset('frontend/css/reset-style.css')}}" rel="stylesheet">
+<link href="{{ asset('frontend/css/responsive.css')}}" rel="stylesheet">
+<link href="{{ asset('frontend/css/fsw.css')}}" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!--wrapper start-->
+<div class="wrapper">
+
+
+    <!-- Start Main Header -->
+    <header class="mega-header">
+    	<div class="header-bar">
+    		<div class="container">
+    			<div class="row">
+    				<div class="col-lg-3 col-lg-offset-9 col-md-4 col-md-offset-8 col-sm-5 col-sm-offset-7 col-xs-6 col-xs-offset-6 wrp-three">
+    					<ul class="social-icons">
+							<li><a href="#"><i class="fa fa-facebook icon"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter icon"></i></a></li>
+							<li><a href="#"><i class="fa fa-instagram icon"></i></a></li>
+							<li><a href="#"><i class="fa fa-youtube-play icon"></i></a></li>
+							<li><a href="#"><i class="fa fa-envelope icon"></i></a></li>
+						</ul>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+
+        <div class="header-top">
+            <div class="container">
+                <div class="row clearfix">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+	                    <a class="logo" href="#"><img src="{{ asset('frontend/images/logo.png') }}" alt="Logo" title="Charity"></a>
+                    </div>
+
+                    <div class="col-lg-8 col-md-8 col-sm-12 header-top-widget headerwidget-style2">
+                        <div class="header-widget">
+                        	<div class="iconbox-widget">
+                        		<div class="icon">
+                        			<i class="flaticon-medical-1"></i>
+                        		</div>
+                        		<div class="box-contenet">
+                        			<h5 class="title"><a href="#">Se connecter</a></h5>
+                        			<p class="sub-title"><a href="#">Pour faire un don</a></p>
+                        		</div>
+                        	</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Header Main-->
+        <div class="header-main">
+        	<div class="container">
+            	<div class="row clearfix">
+                	<div class="col-md-12">
+                        <nav id="mega-menu" class="mega-menu">
+                            <a class="toggleMenu" href="#">
+                                <em></em>
+                                <em></em>
+                                <em></em>
+                            </a>
+                            <div class="clearfix"></div>
+                            <ul class="mainmenu">
+                                <li>
+                                    <a href="#">Accueil</a>
+                                </li>
+                                <li  class="dropdown">
+                                    <a href="#">Qui sommes-nous?</a>
+                                    <ul>
+                                        <li><a href="#">Présentation</a></li>
+                                        <li><a href="#">Equipe dirigeante</a></li>
+                                        <li><a href="#">Objectifs</a></li>
+                                    </ul>
+                                </li>
+                                <li  class="dropdown">
+                                    <a href="#">Interventions</a>
+                                    <ul>
+                                        <li><a href="#">Axes</a></li>
+                                        <li><a href="#">Zones</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Nos actions</a>
+                                </li>
+                                <li>
+                                    <a href="#">Galerie</a>
+                                </li>
+                                <li>
+                                    <a href="#">Contact</a>
+                                </li>
+                            </ul>
+
+                            <div class="appoint-inner">
+                                <div class="appoint-btn text-right">
+                                    <a href="#">Faire un don</a>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Header Main End-->
+    </header>
+    <!--End Main Header -->
+
+	<!--Main Content start-->
+	<div class="main-content">
+
+	   {% block body %}{% endblock %}
+
+
+		<!--Funfact Divider Start-->
+		<section class="theme-overlay overlay-theme bg-img img-2 fo_pt fo_pb">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+						<div class="row">
+							<div class="col-md-4 col-sm-4">
+								<div class="funfact-post">
+									<i class="flaticon-users-group icon"></i>
+									<h4 class="fact-count timer" data-from="0" data-to="27" data-speed="1000" data-refresh-interval="50">27</h4>
+									<h4 class="title">Volontaires</h4>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-4">
+								<div class="funfact-post">
+									<i class="flaticon-medical-1 icon"></i>
+									<h4 class="fact-count timer" data-from="0" data-to="523" data-speed="1000" data-refresh-interval="50">523</h4>
+									<h4 class="title">Donateurs</h4>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-4">
+								<div class="funfact-post">
+									<i class="flaticon-smiley icon"></i>
+									<h4 class="fact-count timer" data-from="0" data-to="1024" data-speed="1000" data-refresh-interval="50">1024</h4>
+									<h4 class="title">Bénéficiares</h4>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--Funfact Divider End-->
+
+	</div>
+	<!--Main Content end-->
+
+	<!-- Footer Start-->
+	<footer class="footer-section">
+		<div class="container">
+			<div class="row go_pt fo_pb">
+				<div class="col-lg-3 col-md-3 col-sm-6">
+					<div class="footer-widget">
+						<a href="#" class="footer-logo"><img src="images/logo-white.png" alt=""></a>
+						<p>Eius sed culpa quidem magni facilis diaiores ullam! Cum dicta nulla emit</p>
+						<
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6">
+					<div class="footer-widget">
+						<div class="footer-widget-title">
+							<h4 class="widget-title">Qui sommes-nous?</h4>
+						</div>
+						<ul class="widget-links">
+							<li><a href="#">Présentation</a></li>
+							<li><a href="#">Equipe dirigeante</a></li>
+							<li><a href="#">Objectifs</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-2 col-sm-6">
+					<div class="footer-widget">
+						<div class="footer-widget-title">
+							<h4 class="widget-title">services</h4>
+						</div>
+						<ul class="widget-links">
+							<li><a href="#">Nos actions</a></li>
+							<li><a href="#">Nos axes d'interventions</a></li>
+							<li><a href="#">Nos zones d'interventions</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3 col-sm-6">
+					<div class="footer-widget">
+						<div class="footer-widget-title">
+							<h4 class="widget-title">Contact</h4>
+						</div>
+						<div class="widget-contact">
+							<p><i class="flaticon-facebook-placeholder-for-locate-places-on-maps"></i>Abidjan, Palmeraie</p>
+							<p><i class="flaticon-social-network"></i>support@samuelwilliams.org</p>
+							<p><i class="flaticon-call-answer"></i>(+225) 00 00 00 00</p>
+						</div>
+						<ul class="social-icons">
+							<li><a href="#"><i class="fa fa-facebook icon"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter icon"></i></a></li>
+							<li><a href="#"><i class="fa fa-instagram icon"></i></a></li>
+							<li><a href="#"><i class="fa fa-youtube-play icon"></i></a></li>
+							<li><a href="#"><i class="fa fa-envelope icon"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer-copyright">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-9 text-left">
+						<p class="copy-right">© Copyright 2017 - <a href="#" target="_blank">Samuel Williams Fondation </a>| Tous droits réservés</p>
+					</div>
+					<div class="col-md-2 text-right">
+						<p class="copy-right">By <a href="http://www.cimetech-ci.com" title="" target="_blank">CIME</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!--Footer end-->
+
+
+	<!--Scroll to top-->
+	<div class="scroll-to-top"><span class="fa fa-arrow-up"></span></div>
+
+</div>
+<!--wrapper end-->
+
+<!--Jquery Script-->
+<script src="{{ asset('frontend/js/jquery-2.1.4.min.js')}}"></script>
+<script src="{{ asset('frontend/js/bootstrap.min.js')}}"></script>
+<script src="{{ asset('frontend/js/revolution.min.js')}}"></script>
+<script src="{{ asset('frontend/js/owl.js')}}"></script>
+<script src="{{ asset('frontend/js/validate.js')}}"></script>
+<script src="{{ asset('frontend/js/jquery-ui-1.11.4/jquery-ui.js')}}"></script>
+<script src="{{ asset('frontend/js/jquery.appear.js')}}"></script>
+<script src="{{ asset('frontend/js/jquery.countTo.js')}}"></script>
+<script src="{{ asset('frontend/js/isotope.pkgd.min.js')}}"></script>
+<script src="{{ asset('frontend/js/jquery.fancybox.pack.js')}}"></script>
+<script src="{{ asset('frontend/js/jquery.easing.min.js')}}"></script>
+<script src="{{ asset('frontend/js/wow.js')}}"></script>
+<script src="{{ asset('frontend/js/jPushMenu.js')}}"></script>
+<script src="{{ asset('frontend/js/rev-custom.js')}}"></script>
+<script src="{{ asset('frontend/js/customcollection.js')}}"></script>
+<script src="{{ asset('frontend/js/custom.js')}}"></script>
+
+</body>
+
+</html>
