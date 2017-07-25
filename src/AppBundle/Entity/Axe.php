@@ -39,7 +39,7 @@ class Axe
     /**
      * @var string
      *
-     * @Gedmo\Slug(fields={"titre"})
+     * @Gedmo\Slug(fields={"intitule"})
      * @ORM\Column(name="slug", type="string", length=255)
      */
     private $slug;
