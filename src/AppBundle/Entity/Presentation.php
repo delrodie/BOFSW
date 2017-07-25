@@ -229,4 +229,196 @@ class Presentation
     {
         return $this->contenu;
     }
+
+    /**
+     * Set imageName
+     *
+     * @param string $imageName
+     *
+     * @return Presentation
+     */
+    public function setImageName($imageName)
+    {
+        $this->imageName = $imageName;
+
+        return $this;
+    }
+
+    /**
+     * Get imageName
+     *
+     * @return string
+     */
+    public function getImageName()
+    {
+        return $this->imageName;
+    }
+
+    /**
+     * Set imageSize
+     *
+     * @param integer $imageSize
+     *
+     * @return Presentation
+     */
+    public function setImageSize($imageSize)
+    {
+        $this->imageSize = $imageSize;
+
+        return $this;
+    }
+
+    /**
+     * Get imageSize
+     *
+     * @return integer
+     */
+    public function getImageSize()
+    {
+        return $this->imageSize;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return Presentation
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Presentation
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set publiePar
+     *
+     * @param string $publiePar
+     *
+     * @return Presentation
+     */
+    public function setPubliePar($publiePar)
+    {
+        $this->publiePar = $publiePar;
+
+        return $this;
+    }
+
+    /**
+     * Get publiePar
+     *
+     * @return string
+     */
+    public function getPubliePar()
+    {
+        return $this->publiePar;
+    }
+
+    /**
+     * Set modifiePar
+     *
+     * @param string $modifiePar
+     *
+     * @return Presentation
+     */
+    public function setModifiePar($modifiePar)
+    {
+        $this->modifiePar = $modifiePar;
+
+        return $this;
+    }
+
+    /**
+     * Get modifiePar
+     *
+     * @return string
+     */
+    public function getModifiePar()
+    {
+        return $this->modifiePar;
+    }
+
+    /**
+     * Set publieLe
+     *
+     * @param \DateTime $publieLe
+     *
+     * @return Presentation
+     */
+    public function setPublieLe($publieLe)
+    {
+        $this->publieLe = $publieLe;
+
+        return $this;
+    }
+
+    /**
+     * Get publieLe
+     *
+     * @return \DateTime
+     */
+    public function getPublieLe()
+    {
+        return $this->publieLe;
+    }
+
+    /**
+     * Set modifieLe
+     *
+     * @param \DateTime $modifieLe
+     *
+     * @return Presentation
+     */
+    public function setModifieLe($modifieLe)
+    {
+        $this->modifieLe = $modifieLe;
+
+        return $this;
+    }
+
+    /**
+     * Get modifieLe
+     *
+     * @return \DateTime
+     */
+    public function getModifieLe()
+    {
+        return $this->modifieLe;
+    }
 }
