@@ -1,16 +1,16 @@
 {% extends 'backoffice.html.twig' %}
 
-{% block title %}{{ zone.titre }}{% endblock %}
+{% block title %}{{ action.titre }}{% endblock %}
 
 {% block body %}
 <div class="pageheader">
-  <h3><i class="fa fa-home"></i>  {{ zone.titre|upper }}</h3>
+  <h3><i class="fa fa-home"></i>  {{ action.titre|upper }}</h3>
   <div class="breadcrumb-wrapper">
     <span class="label"></span>
     <ol class="breadcrumb">
       <li><a href="#">Accueil</a></li>
       <li><a href="#">Intervention</a></li>
-      <li class="active">zone</li>
+      <li class="active">action</li>
     </ol>
   </div>
 </div>
@@ -49,14 +49,14 @@
       <div class="panel">
         <div class="btn-toolbar pad-all">
           <div class="btn-group">
-            <a href="{{ path('admin_zone_index') }}">
+            <a href="{{ path('admin_action_index') }}">
             <button class="btn btn-sm btn-default" type="button">
               <i class="fa fa-mail-reply"></i>
             </button>
             </a>
           </div>
           <div class="btn-group">
-            <a href="{{ path('admin_zone_edit', { 'slug': zone.slug }) }}">
+            <a href="{{ path('admin_action_edit', { 'slug': action.slug }) }}">
             <button class="btn btn-sm btn-default" type="button">
               <i class="fa fa-edit"></i>
             </button>
@@ -72,12 +72,12 @@
           </div>
         </div>
         <div class="panel-heading">
-          <h3 class="panel-title">{{ zone.titre }}</h3>
+          <h3 class="panel-title">{{ action.titre }}</h3>
         </div>
         <div class="panel-body">
-          <div class="view-mail">
-            <img src="{{ vich_uploader_asset(zone, 'imageFile') }}" alt="{{ zone.titre }}" width="400" width="400" class="img-thumbnail img-page" />
-            {{ zone.contenu|raw }}
+          <div class="view-mail text-justify">
+            <img src="{{ vich_uploader_asset(action, 'imageFile') }}" alt="{{ action.titre }}" width="400" class="img-thumbnail img-page" />
+            {{ action.contenu|raw }}
           </div>
         </div>
       </div>
