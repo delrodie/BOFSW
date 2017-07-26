@@ -116,6 +116,11 @@ class Action
      */
     private $modifieLe;
 
+   /**
+   * @ORM\OneToMany(targetEntity="AppBundle\Entity\Album", mappedBy="action")
+   */
+   private $albums;
+
 
     /**
      * Get id
@@ -421,5 +426,50 @@ class Action
     public function getImageFile()
     {
         return $this->imageFile;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->albums = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add album
+     *
+     * @param \AppBundle\Entity\Album $album
+     *
+     * @return Action
+     */
+    public function addAlbum(\AppBundle\Entity\Album $album)
+    {
+        $this->albums[] = $album;
+
+        return $this;
+    }
+
+    /**
+     * Remove album
+     *
+     * @param \AppBundle\Entity\Album $album
+     */
+    public function removeAlbum(\AppBundle\Entity\Album $album)
+    {
+        $this->albums->removeElement($album);
+    }
+
+    /**
+     * Get albums
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAlbums()
+    {
+        return $this->albums;
+    }
+
+    public function __toString() {
+        return $this->getTitre();
     }
 }
