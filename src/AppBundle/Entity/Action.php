@@ -468,4 +468,8 @@ class Action
     {
         return $this->albums;
     }
+
+    public function __toString() {
+        return $this->getTitre();
+    }
 }
