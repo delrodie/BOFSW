@@ -66,6 +66,12 @@ class Eleve
      */
     private $sexe;
 
+   /**
+    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Parrain", inversedBy="filleuls")
+    * @ORM\JoinColumn(name="parrain_id", referencedColumnName="id")
+    */
+    private $parrain;
+
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
@@ -353,5 +359,29 @@ class Eleve
     public function getImageFile()
     {
         return $this->imageFile;
+    }
+
+    /**
+     * Set parrain
+     *
+     * @param \AppBundle\Entity\Parrain $parrain
+     *
+     * @return Eleve
+     */
+    public function setParrain(\AppBundle\Entity\Parrain $parrain = null)
+    {
+        $this->parrain = $parrain;
+
+        return $this;
+    }
+
+    /**
+     * Get parrain
+     *
+     * @return \AppBundle\Entity\Parrain
+     */
+    public function getParrain()
+    {
+        return $this->parrain;
     }
 }

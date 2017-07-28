@@ -1,0 +1,98 @@
+{% extends 'backoffice.html.twig' %}
+
+{% block title %}Liste des eleves{% endblock %}
+
+{% block body %}
+<div class="pageheader">
+  <h3><i class="fa fa-home"></i>  eleve</h3>
+  <div class="breadcrumb-wrapper">
+    <span class="label"></span>
+    <ol class="breadcrumb">
+      <li><a href="#">Accueil</a></li>
+      <li class="active">eleve</li>
+    </ol>
+  </div>
+</div>
+
+<div id="page-content">
+
+  <br>
+    <!-- Message -->
+      {% for flash_message in app.session.flashBag.get('notice') %}
+        {% if flash_message %}
+        <div class="row">
+          <div class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2">
+            <div class="alert alert-info media fade in">
+              <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+              <div class="media-left">
+                <span class="icon-wrap icon-wrap-xs icon-circle alert-icon">
+                  <i class="fa fa-check fa-lg"></i>
+                </span>
+              </div>
+              <div class="media-body">
+                <p></p>
+                  <h4 class="alert-title" style="color: green">
+                    {{ flash_message }}
+                  </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+      <!-- \Message -->
+      <br>
+
+      <div class="row">
+        {% for eleve in eleves %}
+            <div class="col-md-3">
+              <div class="panel widget">
+                <div class="widget-header bg-purple">
+                  <img class="widget-bg img-responsive" src="{{ asset('frontend/images/photos/parallax-2.jpg')}}" alt="Image">
+                </div>
+                <div class="widget-body text-center">
+                  <a href="{{ path('admin_eleve_edit', {'id': eleve.id})}}" title="Modifier la photo">
+                    {% if (eleve.imageName) %}
+                      <img alt="Profile Picture" class="widget-img img-border-light" src="{{ vich_uploader_asset(eleve, 'imageFile') }}">
+                    {% else %}
+                      <img alt="Profile Picture" class="widget-img img-border-light" src="{{ asset('backoffice/img/avatar.png')}}">
+                    {% endif %}
+                  </a>
+                  <h4 class="mar-no">{{ eleve.prenom|title }} {{ eleve.nom|upper }}</h4>
+                  <p class="text-muted mar-btm">{{ eleve.sexe }}</p>
+                </div>
+                <ul class="menu-items">
+                  <li>
+                    <a href="javascript:void(0)" class="clearfix" title="Domicile">
+                      <i class="fa fa-map-marker fa-lg"></i> {{ eleve.domicile }}
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)" class="clearfix" title="Date de naissance">
+                      <i class="fa fa-calendar fa-lg"></i> {{ eleve.datenaissance }}
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)" class="clearfix" title="Lieu de naissance">
+                      <i class="fa fa-map-marker fa-lg"></i> {{ eleve.lieunaissance }}
+                    </a>
+                  </li>
+                  <li>
+                    <a href="javascript:void(0)" class="clearfix" title="Parrain">
+                      <i class="fa fa-user-secret fa-lg"></i> {{ eleve.parrain }}
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="clearfix">
+                      <i class="fa fa-search fa-lg"></i> Voir ses resultats scolaires
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+        {% endfor %}
+      </div>
+
+
+</div>
+{% endblock %}

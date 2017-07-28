@@ -95,6 +95,11 @@ class Parrain
      */
     private $photo;
 
+   /**
+   * @ORM\OneToMany(targetEntity="AppBundle\Entity\Eleve", mappedBy="parrain")
+   */
+   private $filleuls;
+
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
@@ -480,4 +485,49 @@ class Parrain
         return $this->imageFile;
     }
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->filleuls = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add filleul
+     *
+     * @param \AppBundle\Entity\Eleve $filleul
+     *
+     * @return Parrain
+     */
+    public function addFilleul(\AppBundle\Entity\Eleve $filleul)
+    {
+        $this->filleuls[] = $filleul;
+
+        return $this;
+    }
+
+    /**
+     * Remove filleul
+     *
+     * @param \AppBundle\Entity\Eleve $filleul
+     */
+    public function removeFilleul(\AppBundle\Entity\Eleve $filleul)
+    {
+        $this->filleuls->removeElement($filleul);
+    }
+
+    /**
+     * Get filleuls
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFilleuls()
+    {
+        return $this->filleuls;
+    }
+
+    public function __toString() {
+        return $this->getNom().' '.$this->getPrenom();
+    }
 }
