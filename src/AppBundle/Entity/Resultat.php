@@ -72,6 +72,11 @@ class Resultat
     */
     private $eleve;
 
+   /**
+   * @ORM\OneToMany(targetEntity="AppBundle\Entity\Difficulte", mappedBy="resultat")
+   */
+   private $difficultes;
+
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
@@ -383,5 +388,46 @@ class Resultat
     public function getEleve()
     {
         return $this->eleve;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->difficultes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add difficulte
+     *
+     * @param \AppBundle\Entity\Difficulte $difficulte
+     *
+     * @return Resultat
+     */
+    public function addDifficulte(\AppBundle\Entity\Difficulte $difficulte)
+    {
+        $this->difficultes[] = $difficulte;
+
+        return $this;
+    }
+
+    /**
+     * Remove difficulte
+     *
+     * @param \AppBundle\Entity\Difficulte $difficulte
+     */
+    public function removeDifficulte(\AppBundle\Entity\Difficulte $difficulte)
+    {
+        $this->difficultes->removeElement($difficulte);
+    }
+
+    /**
+     * Get difficultes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDifficultes()
+    {
+        return $this->difficultes;
     }
 }
