@@ -12,7 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
-class EleveType extends AbstractType
+class ResultatType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -20,42 +20,42 @@ class EleveType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom', TextType::class, array(
+            ->add('annee', TextType::class, array(
                   'attr'  => array(
                       'class' => 'form-control',
                       'autocomplete'  => 'off',
                       'readonly' => 'readonly'
                   )
             ))
-            ->add('prenom', TextType::class, array(
+            ->add('classe', TextType::class, array(
                   'attr'  => array(
                       'class' => 'form-control',
                       'autocomplete'  => 'off',
                       'readonly' => 'readonly'
                   )
             ))
-            ->add('datenaissance', TextType::class, array(
+            ->add('periode', TextType::class, array(
                   'attr'  => array(
                       'class' => 'form-control',
                       'autocomplete'  => 'off',
                       'readonly' => 'readonly'
                   )
             ))
-            ->add('lieunaissance', TextType::class, array(
+            ->add('moyenne', TextType::class, array(
                   'attr'  => array(
                       'class' => 'form-control',
                       'autocomplete'  => 'off',
                       'readonly' => 'readonly'
                   )
             ))
-            ->add('domicile', TextType::class, array(
+            ->add('rang', TextType::class, array(
                   'attr'  => array(
                       'class' => 'form-control',
                       'autocomplete'  => 'off',
                       'readonly' => 'readonly'
                   )
             ))
-            ->add('sexe', TextType::class, array(
+            ->add('observation', null, array(
                   'attr'  => array(
                       'class' => 'form-control',
                       'autocomplete'  => 'off',
@@ -70,6 +70,7 @@ class EleveType extends AbstractType
                   )
               ))
             //->add('imageName')->add('imageSize')->add('updatedAt')
+            //->add('eleve')
             ;
     }
 
@@ -79,7 +80,7 @@ class EleveType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Eleve'
+            'data_class' => 'AppBundle\Entity\Resultat'
         ));
     }
 
@@ -88,7 +89,7 @@ class EleveType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_eleve';
+        return 'appbundle_resultat';
     }
 
 

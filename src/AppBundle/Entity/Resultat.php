@@ -82,7 +82,7 @@ class Resultat
     private $imageFile;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true, nullable=true)
      *
      * @var string
      */
@@ -96,7 +96,7 @@ class Resultat
     private $imageSize;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      *
      * @var \DateTime
      */

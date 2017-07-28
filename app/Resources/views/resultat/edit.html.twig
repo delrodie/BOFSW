@@ -1,6 +1,6 @@
 {% extends 'backoffice.html.twig' %}
 
-{% block title %}{{ eleve.nom|upper }} {{ eleve.prenom|title }}{% endblock %}
+{% block title %} Resultat {{ resultat.eleve|upper }}{% endblock %}
 
 {% block stylesheets %}
 {{ parent() }}
@@ -11,12 +11,12 @@
 
 {% block body %}
 <div class="pageheader">
-  <h3><i class="fa fa-home"></i>  Parrain </h3>
+  <h3><i class="fa fa-home"></i>  Eleve </h3>
   <div class="breadcrumb-wrapper">
     <span class="label"></span>
     <ol class="breadcrumb">
       <li><a href="#">Accueil</a></li>
-      <li class="active">Parrain</li>
+      <li class="active">Eleve</li>
     </ol>
   </div>
 </div>
@@ -61,41 +61,57 @@
 
                   <div class="panel-body">
                     <div class="row">
-                      <div class="col-xs-3 col-xs-offset-1">
+                      <div class="col-xs-2 col-xs-offset-1">
                         <div class="form-group">
-                          <label class="control-label">Nom</label>
-                          {{ form_widget(edit_form.nom) }}
-                          {{ form_errors(edit_form.nom) }}
+                          <label class="control-label">Annee scolaire</label>
+                          {{ form_widget(edit_form.annee) }}
+                          {{ form_errors(edit_form.annee) }}
                         </div>
                       </div>
-                      <div class="col-xs-4 col-xs-offset-0">
+                      <div class="col-xs-2 col-xs-offset-0">
                         <div class="form-group">
-                          <label class="control-label">Prenoms</label>
-                          {{ form_widget(edit_form.prenom) }}
-                          {{ form_errors(edit_form.prenom) }}
+                          <label class="control-label">Classe</label>
+                          {{ form_widget(edit_form.classe) }}
+                          {{ form_errors(edit_form.classe) }}
                         </div>
                       </div>
-                      <div class="col-xs-3 col-xs-offset-0 text-left">
-                        {% if (eleve.imageName) %}
-                          <img alt="Profile Picture" class="widget-img img-border-light" src="{{ vich_uploader_asset(eleve, 'imageFile') }}">
+                      <div class="col-xs-3 col-xs-offset-0">
+                        <div class="form-group">
+                          <label class="control-label">Periode</label>
+                          {{ form_widget(edit_form.periode) }}
+                          {{ form_errors(edit_form.periode) }}
+                        </div>
+                      </div>
+                      <div class="col-xs-3 col-xs-offset-0 text-right">
+                        {% if (resultat.imageName) %}
+                          <a href="{{ vich_uploader_asset(resultat, 'imageFile') }}" target="_blank">
+                            <i class="fa fa-file-text-o fa-3x"></i>
+                          </a>
                         {% else %}
-                          <img alt="Profile Picture" class="widget-img img-border-light" src="{{ asset('backoffice/img/avatar.png')}}">
+                          <i class="fa fa-exclamation-circle fa-3x"></i>
                         {% endif %}
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-xs-3 col-xs-offset-1">
+                      <div class="col-xs-1 col-xs-offset-1">
                         <div class="form-group">
-                          <label class="control-label">Date de naissance</label>
-                          {{ form_widget(edit_form.datenaissance) }}
-                          {{ form_errors(edit_form.datenaissance) }}
+                          <label class="control-label">Rang</label>
+                          {{ form_widget(edit_form.rang) }}
+                          {{ form_errors(edit_form.rang) }}
+                        </div>
+                      </div>
+                      <div class="col-xs-3 col-xs-offset-0">
+                        <div class="form-group">
+                          <label class="control-label">Moyenne</label>
+                          {{ form_widget(edit_form.moyenne) }}
+                          {{ form_errors(edit_form.moyenne) }}
                         </div>
                       </div>
                       <div class="col-xs-4 col-xs-offset-0">
                         <div class="form-group">
-                          <label class="control-label">Lieu de naissance</label>
-                          {{ form_widget(edit_form.lieunaissance) }}
-                          {{ form_errors(edit_form.lieunaissance) }}
+                          <label class="control-label">Observation</label>
+                          {{ form_widget(edit_form.observation) }}
+                          {{ form_errors(edit_form.observation) }}
                         </div>
                       </div>
                       <div class="col-xs-3 col-xs-offset-0">
@@ -105,22 +121,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-xs-2 col-xs-offset-1">
-                        <div class="form-group">
-                          <label class="control-label">Sexe</label>
-                          {{ form_widget(edit_form.sexe) }}
-                          {{ form_errors(edit_form.sexe) }}
-                        </div>
-                      </div>
-                      <div class="col-xs-3 col-xs-offset-0">
-                        <div class="form-group">
-                          <label class="control-label">Domicile</label>
-                          {{ form_widget(edit_form.domicile) }}
-                          {{ form_errors(edit_form.domicile) }}
-                        </div>
-                      </div>
-                    </div>
+
                   </div>
                   <div class="panel-footer">
                     <div class="row">
@@ -134,9 +135,6 @@
               </div>
             </div>
           </div>
-          <form action="#">
-
-                                        </form>
 
 </div>
 

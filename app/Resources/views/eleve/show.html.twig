@@ -1,64 +1,151 @@
-{% extends 'base.html.twig' %}
+{% extends 'backoffice.html.twig' %}
+
+{% block title %}{{ eleve.nom|upper }} {{ eleve.prenom|title }}{% endblock %}
 
 {% block body %}
-    <h1>Eleve</h1>
+<div class="pageheader">
+  <h3><i class="fa fa-home"></i>  eleve</h3>
+  <div class="breadcrumb-wrapper">
+    <span class="label"></span>
+    <ol class="breadcrumb">
+      <li><a href="#">Accueil</a></li>
+      <li class="active">eleve</li>
+    </ol>
+  </div>
+</div>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ eleve.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ eleve.nom }}</td>
-            </tr>
-            <tr>
-                <th>Prenom</th>
-                <td>{{ eleve.prenom }}</td>
-            </tr>
-            <tr>
-                <th>Datenaissance</th>
-                <td>{{ eleve.datenaissance }}</td>
-            </tr>
-            <tr>
-                <th>Lieunaissance</th>
-                <td>{{ eleve.lieunaissance }}</td>
-            </tr>
-            <tr>
-                <th>Domicile</th>
-                <td>{{ eleve.domicile }}</td>
-            </tr>
-            <tr>
-                <th>Sexe</th>
-                <td>{{ eleve.sexe }}</td>
-            </tr>
-            <tr>
-                <th>Imagename</th>
-                <td>{{ eleve.imageName }}</td>
-            </tr>
-            <tr>
-                <th>Imagesize</th>
-                <td>{{ eleve.imageSize }}</td>
-            </tr>
-            <tr>
-                <th>Updatedat</th>
-                <td>{% if eleve.updatedAt %}{{ eleve.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-        </tbody>
-    </table>
+<div id="page-content">
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_eleve_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('admin_eleve_edit', { 'id': eleve.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+  <br>
+    <!-- Message -->
+      {% for flash_message in app.session.flashBag.get('notice') %}
+        {% if flash_message %}
+        <div class="row">
+          <div class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2">
+            <div class="alert alert-info media fade in">
+              <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+              <div class="media-left">
+                <span class="icon-wrap icon-wrap-xs icon-circle alert-icon">
+                  <i class="fa fa-check fa-lg"></i>
+                </span>
+              </div>
+              <div class="media-body">
+                <p></p>
+                  <h4 class="alert-title" style="color: green">
+                    {{ flash_message }}
+                  </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+      <!-- \Message -->
+      <br>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="panel">
+            <div class="panel-body np">
+              {% if (eleve.imageName) %}
+                <img alt="Cover" class="img-responsive" src="{{ vich_uploader_asset(eleve, 'imageFile') }}">
+              {% else %}
+                <img  alt="Cover" class="img-responsive" src="{{ asset('backoffice/img/avatar.png')}}">
+              {% endif %}
+              <div class="text-center">
+                <h4 class="text-lg text-overflow mar-top">{{ eleve.nom|upper }} {{ eleve.prenom|title }}</h4>
+                <p class="text-sm">{{ eleve.sexe }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-heading">
+              <h3 class="panel-title"><i class="fa fa-user"> </i> Information</h3>
+            </div>
+            <div class="panel-body">
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td><i class="fa fa-map-marker fa-lg"></i></td>
+                    <td>Domicile</td>
+                    <td>{{ eleve.domicile }}</td>
+                  </tr>
+                  <tr>
+                    <td><i class="fa fa-calendar fa-lg"></i></td>
+                    <td>Date</td>
+                    <td>{{ eleve.datenaissance }}</td>
+                  </tr>
+                  <tr>
+                    <td><i class="fa fa-map-marker fa-lg"></i></td>
+                    <td>Lieu</td>
+                    <td>{{ eleve.lieunaissance }}</td>
+                  </tr>
+                  <tr>
+                    <td><i class="fa fa-user-secret fa-lg"></i></td>
+                    <td>Parrain</td>
+                    <td>{{ eleve.parrain }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="panel">
+            <div class="panel-body pad-no">
+              <div class="tab-base">
+                <ul class="nav nav-tabs">
+                  <li class="active"> <a data-toggle="tab" href="#resultat"> Resultats </a> </li>
+                </ul>
+                <div class="tab-content">
+                  <div id="resultat" class="tab-pane fade active in">
+                    <table class="table table-hover table-vcenter">
+                      <thead>
+                        <tr>
+                          <td>#</td>
+                          <td>PERIODES</td>
+                          <td>MOYENNES</td>
+                          <td>RANGS</td>
+                          <td>OBSERVATIONS</td>
+                          <td>DIFFICULTES</td>
+                          <td>BULLETINS</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for resultat in resultats %}
+                          <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ resultat.periode }}</td>
+                            <td class="text-center">{{ resultat.moyenne }}</td>
+                            <td class="text-center">{{ resultat.rang }}</td>
+                            <td>{{ resultat.observation }}</td>
+                            <td></td>
+                            <td class="text-center">
+                              {% if (resultat.imageName) %}
+                              <a href="{{ vich_uploader_asset(resultat, 'imageFile') }}" target="_blank" title="Voir le bulletin">
+                                <i class="fa fa-file-text-o fa-lg"></i>
+                              </a> |
+                              <a href="{{ path('admin_resultat_edit', {'id': resultat.id})}}" title="Modififer le bulletin">
+                                <i class="fa fa-edit fa-lg"></i>
+                              </a>
+                              {% else %}
+                                <a href="{{ path('admin_resultat_edit', {'id': resultat.id})}}" title="Ajouter le bulletin">
+                                  <i class="fa fa-edit fa-lg"></i>
+                                </a>
+                              {% endif %}
+                            </td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+</div>
 {% endblock %}

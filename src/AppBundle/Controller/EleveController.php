@@ -67,8 +67,13 @@ class EleveController extends Controller
     {
         $deleteForm = $this->createDeleteForm($eleve);
 
+        $em = $this->getDoctrine()->getManager();
+
+        $resultats = $em->getRepository('AppBundle:Resultat')->findBy(array('eleve' => $eleve->getId()));
+
         return $this->render('eleve/show.html.twig', array(
             'eleve' => $eleve,
+            'resultats' => $resultats,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -88,7 +93,7 @@ class EleveController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('admin_eleve_edit', array('id' => $eleve->getId()));
+            return $this->redirectToRoute('admin_eleve_show', array('id' => $eleve->getId()));
         }
 
         return $this->render('eleve/edit.html.twig', array(
