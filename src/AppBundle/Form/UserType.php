@@ -41,8 +41,16 @@ class UserType extends AbstractType
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les mots de passe doivent être identiques.',
                 'required' => $options['passwordRequired'],
-                'first_options'  => array('label' => 'Mot de passe'),
-                'second_options' => array('label' => 'Répétez le mot de passe'),
+                'first_options'  => array('label' => 'Mot de passe',
+                                          'attr' => array(
+                                            'class' => 'form-control',
+                                            'autocomplete'  => 'off'
+                                          )),
+                'second_options' => array('label' => 'Répétez le mot de passe',
+                                          'attr' => array(
+                                            'class' => 'form-control',
+                                            'autocomplete'  => 'off'
+                                          )),
             ))
             //->add('lastLogin')->add('confirmationToken')->add('passwordRequestedAt')
             ->add('roles', ChoiceType::class, array(
