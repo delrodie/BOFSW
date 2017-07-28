@@ -430,4 +430,8 @@ class Resultat
     {
         return $this->difficultes;
     }
+
+    public function __toString() {
+        return $this->getPeriode().' '.$this->getAnnee();
+    }
 }

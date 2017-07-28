@@ -119,7 +119,9 @@
                             <td class="text-center">{{ resultat.moyenne }}</td>
                             <td class="text-center">{{ resultat.rang }}</td>
                             <td>{{ resultat.observation }}</td>
-                            <td></td>
+                            <td class="text-center">
+                              {{ render(url('resultat_difficulte', {'id': resultat.id})) }}
+                            </td>
                             <td class="text-center">
                               {% if (resultat.imageName) %}
                               <a href="{{ vich_uploader_asset(resultat, 'imageFile') }}" target="_blank" title="Voir le bulletin">

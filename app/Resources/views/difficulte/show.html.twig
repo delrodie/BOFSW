@@ -1,0 +1,244 @@
+{% extends 'backoffice.html.twig' %}
+
+{% block title %}{{ eleve.nom|upper }} {{ eleve.prenom|title }}{% endblock %}
+
+{% block body %}
+<div class="pageheader">
+  <h3><i class="fa fa-home"></i>  eleve</h3>
+  <div class="breadcrumb-wrapper">
+    <span class="label"></span>
+    <ol class="breadcrumb">
+      <li><a href="#">Accueil</a></li>
+      <li class="active">eleve</li>
+    </ol>
+  </div>
+</div>
+
+<div id="page-content">
+
+  <br>
+    <!-- Message -->
+      {% for flash_message in app.session.flashBag.get('notice') %}
+        {% if flash_message %}
+        <div class="row">
+          <div class="col-xs-8 col-xs-offset-2 col-sm-8 col-sm-offset-2">
+            <div class="alert alert-info media fade in">
+              <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+              <div class="media-left">
+                <span class="icon-wrap icon-wrap-xs icon-circle alert-icon">
+                  <i class="fa fa-check fa-lg"></i>
+                </span>
+              </div>
+              <div class="media-body">
+                <p></p>
+                  <h4 class="alert-title" style="color: green">
+                    {{ flash_message }}
+                  </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+      <!-- \Message -->
+      <br>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="panel">
+            <div class="panel-body np">
+              {% if (eleve.imageName) %}
+                <img alt="Cover" class="img-responsive" src="{{ vich_uploader_asset(eleve, 'imageFile') }}">
+              {% else %}
+                <img  alt="Cover" class="img-responsive" src="{{ asset('backoffice/img/avatar.png')}}">
+              {% endif %}
+              <div class="text-center">
+                <h4 class="text-lg text-overflow mar-top">{{ eleve.nom|upper }} {{ eleve.prenom|title }}</h4>
+                <p class="text-sm">{{ eleve.sexe }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-heading">
+              <h3 class="panel-title"><i class="fa fa-user"> </i> Information</h3>
+            </div>
+            <div class="panel-body">
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td><i class="fa fa-map-marker fa-lg"></i></td>
+                    <td>Domicile</td>
+                    <td>{{ eleve.domicile }}</td>
+                  </tr>
+                  <tr>
+                    <td><i class="fa fa-calendar fa-lg"></i></td>
+                    <td>Date</td>
+                    <td>{{ eleve.datenaissance }}</td>
+                  </tr>
+                  <tr>
+                    <td><i class="fa fa-map-marker fa-lg"></i></td>
+                    <td>Lieu</td>
+                    <td>{{ eleve.lieunaissance }}</td>
+                  </tr>
+                  <tr>
+                    <td><i class="fa fa-user-secret fa-lg"></i></td>
+                    <td>Parrain</td>
+                    <td>{{ eleve.parrain }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel-heading">
+              <h3 class="panel-title"><i class="fa fa-graduation-cap"> </i> Resultats</h3>
+            </div>
+            <div class="panel-body">
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td><i class="fa fa-calendar fa-lg"></i></td>
+                    <td>Periode</td>
+                    <td>{{ resultat.periode }}</td>
+                  </tr>
+                  <tr>
+                    <td><i class="fa fa-calculator fa-lg"></i></td>
+                    <td>Moyenne</td>
+                    <td>{{ resultat.moyenne }}</td>
+                  </tr>
+                  <tr>
+                    <td><i class="fa fa-paper-plane-o fa-lg"></i></td>
+                    <td>Rang</td>
+                    <td>{{ resultat.rang }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="panel">
+            <div class="panel-body pad-no">
+              <div class="tab-base">
+                <ul class="nav nav-tabs">
+                  <li class="active"> <a data-toggle="tab" href="#resultat"> Difficultes </a> </li>
+                </ul>
+                <div class="tab-content">
+                  <div id="resultat" class="tab-pane fade active in">
+                    <table class="table table-hover table-vcenter">
+                      <thead>
+                        <tr>
+                          <td>#</td>
+                          <td>LIBELLES</td>
+                          <td>MENTIONS</td>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>Age</td>
+                          <td>{{ difficulte.age }}</td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>Moyenne générale classe</td>
+                          <td>{{ difficulte.mga }}</td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>Décision de fin d'année classe</td>
+                          <td>{{ difficulte.decision }}</td>
+                        </tr>
+                        <tr>
+                          <td>4</td>
+                          <td>Allemand</td>
+                          <td>{{ difficulte.allemand }}</td>
+                        </tr>
+                        <tr>
+                          <td>5</td>
+                          <td>Anglais</td>
+                          <td>{{ difficulte.anglais }}</td>
+                        </tr>
+                        <tr>
+                          <td>6</td>
+                          <td>Autres</td>
+                          <td>{{ difficulte.autres }}</td>
+                        </tr>
+                        <tr>
+                          <td>7</td>
+                          <td>Calcul</td>
+                          <td>{{ difficulte.calcul }}</td>
+                        </tr>
+                        <tr>
+                          <td>8</td>
+                          <td>Dictée</td>
+                          <td>{{ difficulte.dictee }}</td>
+                        </tr>
+                        <tr>
+                          <td>9</td>
+                          <td>Espagnaol</td>
+                          <td>{{ difficulte.espagnol }}</td>
+                        </tr>
+                        <tr>
+                          <td>10</td>
+                          <td>Français</td>
+                          <td>{{ difficulte.francais }}</td>
+                        </tr>
+                        <tr>
+                          <td>11</td>
+                          <td>Histoire Géographie</td>
+                          <td>{{ difficulte.hg }}</td>
+                        </tr>
+                        <tr>
+                          <td>12</td>
+                          <td>Lecture</td>
+                          <td>{{ difficulte.lecture }}</td>
+                        </tr>
+                        <tr>
+                          <td>13</td>
+                          <td>Mathématiques</td>
+                          <td>{{ difficulte.maths }}</td>
+                        </tr>
+                        <tr>
+                          <td>14</td>
+                          <td>Scolaire</td>
+                          <td>{{ difficulte.scolaire }}</td>
+                        </tr>
+                        <tr>
+                          <td>15</td>
+                          <td>Sciences Physiques</td>
+                          <td>{{ difficulte.sp }}</td>
+                        </tr>
+                        <tr>
+                          <td>16</td>
+                          <td>SVT</td>
+                          <td>{{ difficulte.svt }}</td>
+                        </tr>
+                        <tr>
+                          <td>17</td>
+                          <td>Rang</td>
+                          <td>{{ difficulte.rang }}</td>
+                        </tr>
+                        <tr>
+                          <td>18</td>
+                          <td>Observation</td>
+                          <td>{{ difficulte.observation }}</td>
+                        </tr>
+                        <tr>
+                          <td>19</td>
+                          <td>Moyenne Totale Classe</td>
+                          <td>{{ difficulte.mgaTotalClasse }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+</div>
+{% endblock %}

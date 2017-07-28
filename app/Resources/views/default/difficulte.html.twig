@@ -1,0 +1,7 @@
+{% if (difficulte) %}
+<a href="{{ path('admin_difficulte_show', {'id': difficulte.id }) }}" title="Voir les difficultes">
+  <i class="fa fa-search fa-lg"></i>
+</a>
+{% else %}
+  -
+{% endif %}

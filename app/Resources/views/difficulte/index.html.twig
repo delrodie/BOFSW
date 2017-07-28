@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Difficultes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Age</th>
+                <th>Mga</th>
+                <th>Decision</th>
+                <th>Allemand</th>
+                <th>Anglais</th>
+                <th>Autres</th>
+                <th>Calcul</th>
+                <th>Dictee</th>
+                <th>Espagnol</th>
+                <th>Francais</th>
+                <th>Hg</th>
+                <th>Lecture</th>
+                <th>Maths</th>
+                <th>Scolaire</th>
+                <th>Sp</th>
+                <th>Svt</th>
+                <th>Rang</th>
+                <th>Observation</th>
+                <th>Mgatotalclasse</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for difficulte in difficultes %}
+            <tr>
+                <td><a href="{{ path('admin_difficulte_show', { 'id': difficulte.id }) }}">{{ difficulte.id }}</a></td>
+                <td>{{ difficulte.age }}</td>
+                <td>{{ difficulte.mga }}</td>
+                <td>{{ difficulte.decision }}</td>
+                <td>{{ difficulte.allemand }}</td>
+                <td>{{ difficulte.anglais }}</td>
+                <td>{{ difficulte.autres }}</td>
+                <td>{{ difficulte.calcul }}</td>
+                <td>{{ difficulte.dictee }}</td>
+                <td>{{ difficulte.espagnol }}</td>
+                <td>{{ difficulte.francais }}</td>
+                <td>{{ difficulte.hg }}</td>
+                <td>{{ difficulte.lecture }}</td>
+                <td>{{ difficulte.maths }}</td>
+                <td>{{ difficulte.scolaire }}</td>
+                <td>{{ difficulte.sp }}</td>
+                <td>{{ difficulte.svt }}</td>
+                <td>{{ difficulte.rang }}</td>
+                <td>{{ difficulte.observation }}</td>
+                <td>{{ difficulte.mgaTotalClasse }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_difficulte_show', { 'id': difficulte.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_difficulte_edit', { 'id': difficulte.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_difficulte_new') }}">Create a new difficulte</a>
+        </li>
+    </ul>
+{% endblock %}
