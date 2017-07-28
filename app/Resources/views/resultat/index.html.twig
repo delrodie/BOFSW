@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Resultats list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Annee</th>
+                <th>Classe</th>
+                <th>Periode</th>
+                <th>Moyenne</th>
+                <th>Rang</th>
+                <th>Observation</th>
+                <th>Imagename</th>
+                <th>Imagesize</th>
+                <th>Updatedat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for resultat in resultats %}
+            <tr>
+                <td><a href="{{ path('admin_resultat_show', { 'id': resultat.id }) }}">{{ resultat.id }}</a></td>
+                <td>{{ resultat.annee }}</td>
+                <td>{{ resultat.classe }}</td>
+                <td>{{ resultat.periode }}</td>
+                <td>{{ resultat.moyenne }}</td>
+                <td>{{ resultat.rang }}</td>
+                <td>{{ resultat.observation }}</td>
+                <td>{{ resultat.imageName }}</td>
+                <td>{{ resultat.imageSize }}</td>
+                <td>{% if resultat.updatedAt %}{{ resultat.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_resultat_show', { 'id': resultat.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_resultat_edit', { 'id': resultat.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_resultat_new') }}">Create a new resultat</a>
+        </li>
+    </ul>
+{% endblock %}
