@@ -7,13 +7,13 @@ use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
- * Eleve
+ * Resultat
  *
- * @ORM\Table(name="eleve")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\EleveRepository")
+ * @ORM\Table(name="resultat")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ResultatRepository")
  * @Vich\Uploadable
  */
-class Eleve
+class Resultat
 {
     /**
      * @var int
@@ -27,60 +27,55 @@ class Eleve
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255, nullable=true)
+     * @ORM\Column(name="annee", type="string", length=255, nullable=true)
      */
-    private $nom;
+    private $annee;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prenom", type="string", length=255, nullable=true)
+     * @ORM\Column(name="classe", type="string", length=255, nullable=true)
      */
-    private $prenom;
+    private $classe;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="datenaissance", type="string", length=255, nullable=true)
+     * @ORM\Column(name="periode", type="string", length=255, nullable=true)
      */
-    private $datenaissance;
+    private $periode;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="lieunaissance", type="string", length=255, nullable=true)
+     * @ORM\Column(name="moyenne", type="string", length=255, nullable=true)
      */
-    private $lieunaissance;
+    private $moyenne;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="domicile", type="string", length=255, nullable=true)
+     * @ORM\Column(name="rang", type="string", length=255, nullable=true)
      */
-    private $domicile;
+    private $rang;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="sexe", type="string", length=255, nullable=true)
+     * @ORM\Column(name="observation", type="text", nullable=true)
      */
-    private $sexe;
+    private $observation;
 
    /**
-    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Parrain", inversedBy="filleuls")
-    * @ORM\JoinColumn(name="parrain_id", referencedColumnName="id")
+    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Eleve", inversedBy="resultats")
+    * @ORM\JoinColumn(name="eleve_id", referencedColumnName="id")
     */
-    private $parrain;
-
-   /**
-   * @ORM\OneToMany(targetEntity="AppBundle\Entity\Resultat", mappedBy="eleve")
-   */
-   private $resultats;
+    private $eleve;
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="eleve_image", fileNameProperty="imageName", size="imageSize")
+     * @Vich\UploadableField(mapping="resultat_image", fileNameProperty="imageName", size="imageSize")
      *
      * @var File
      */
@@ -119,147 +114,147 @@ class Eleve
     }
 
     /**
-     * Set nom
+     * Set annee
      *
-     * @param string $nom
+     * @param string $annee
      *
-     * @return Eleve
+     * @return Resultat
      */
-    public function setNom($nom)
+    public function setAnnee($annee)
     {
-        $this->nom = $nom;
+        $this->annee = $annee;
 
         return $this;
     }
 
     /**
-     * Get nom
+     * Get annee
      *
      * @return string
      */
-    public function getNom()
+    public function getAnnee()
     {
-        return $this->nom;
+        return $this->annee;
     }
 
     /**
-     * Set prenom
+     * Set classe
      *
-     * @param string $prenom
+     * @param string $classe
      *
-     * @return Eleve
+     * @return Resultat
      */
-    public function setPrenom($prenom)
+    public function setClasse($classe)
     {
-        $this->prenom = $prenom;
+        $this->classe = $classe;
 
         return $this;
     }
 
     /**
-     * Get prenom
+     * Get classe
      *
      * @return string
      */
-    public function getPrenom()
+    public function getClasse()
     {
-        return $this->prenom;
+        return $this->classe;
     }
 
     /**
-     * Set datenaissance
+     * Set periode
      *
-     * @param string $datenaissance
+     * @param string $periode
      *
-     * @return Eleve
+     * @return Resultat
      */
-    public function setDatenaissance($datenaissance)
+    public function setPeriode($periode)
     {
-        $this->datenaissance = $datenaissance;
+        $this->periode = $periode;
 
         return $this;
     }
 
     /**
-     * Get datenaissance
+     * Get periode
      *
      * @return string
      */
-    public function getDatenaissance()
+    public function getPeriode()
     {
-        return $this->datenaissance;
+        return $this->periode;
     }
 
     /**
-     * Set lieunaissance
+     * Set moyenne
      *
-     * @param string $lieunaissance
+     * @param string $moyenne
      *
-     * @return Eleve
+     * @return Resultat
      */
-    public function setLieunaissance($lieunaissance)
+    public function setMoyenne($moyenne)
     {
-        $this->lieunaissance = $lieunaissance;
+        $this->moyenne = $moyenne;
 
         return $this;
     }
 
     /**
-     * Get lieunaissance
+     * Get moyenne
      *
      * @return string
      */
-    public function getLieunaissance()
+    public function getMoyenne()
     {
-        return $this->lieunaissance;
+        return $this->moyenne;
     }
 
     /**
-     * Set domicile
+     * Set rang
      *
-     * @param string $domicile
+     * @param string $rang
      *
-     * @return Eleve
+     * @return Resultat
      */
-    public function setDomicile($domicile)
+    public function setRang($rang)
     {
-        $this->domicile = $domicile;
+        $this->rang = $rang;
 
         return $this;
     }
 
     /**
-     * Get domicile
+     * Get rang
      *
      * @return string
      */
-    public function getDomicile()
+    public function getRang()
     {
-        return $this->domicile;
+        return $this->rang;
     }
 
     /**
-     * Set sexe
+     * Set observation
      *
-     * @param string $sexe
+     * @param string $observation
      *
-     * @return Eleve
+     * @return Resultat
      */
-    public function setSexe($sexe)
+    public function setObservation($observation)
     {
-        $this->sexe = $sexe;
+        $this->observation = $observation;
 
         return $this;
     }
 
     /**
-     * Get sexe
+     * Get observation
      *
      * @return string
      */
-    public function getSexe()
+    public function getObservation()
     {
-        return $this->sexe;
+        return $this->observation;
     }
 
     /**
@@ -267,7 +262,7 @@ class Eleve
      *
      * @param string $imageName
      *
-     * @return Eleve
+     * @return Resultat
      */
     public function setImageName($imageName)
     {
@@ -291,7 +286,7 @@ class Eleve
      *
      * @param integer $imageSize
      *
-     * @return Eleve
+     * @return Resultat
      */
     public function setImageSize($imageSize)
     {
@@ -315,7 +310,7 @@ class Eleve
      *
      * @param \DateTime $updatedAt
      *
-     * @return Eleve
+     * @return Resultat
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -367,71 +362,26 @@ class Eleve
     }
 
     /**
-     * Set parrain
+     * Set eleve
      *
-     * @param \AppBundle\Entity\Parrain $parrain
+     * @param \AppBundle\Entity\Eleve $eleve
      *
-     * @return Eleve
+     * @return Resultat
      */
-    public function setParrain(\AppBundle\Entity\Parrain $parrain = null)
+    public function setEleve(\AppBundle\Entity\Eleve $eleve = null)
     {
-        $this->parrain = $parrain;
+        $this->eleve = $eleve;
 
         return $this;
     }
 
     /**
-     * Get parrain
+     * Get eleve
      *
-     * @return \AppBundle\Entity\Parrain
+     * @return \AppBundle\Entity\Eleve
      */
-    public function getParrain()
+    public function getEleve()
     {
-        return $this->parrain;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->resultats = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add resultat
-     *
-     * @param \AppBundle\Entity\Resultat $resultat
-     *
-     * @return Eleve
-     */
-    public function addResultat(\AppBundle\Entity\Resultat $resultat)
-    {
-        $this->resultats[] = $resultat;
-
-        return $this;
-    }
-
-    /**
-     * Remove resultat
-     *
-     * @param \AppBundle\Entity\Resultat $resultat
-     */
-    public function removeResultat(\AppBundle\Entity\Resultat $resultat)
-    {
-        $this->resultats->removeElement($resultat);
-    }
-
-    /**
-     * Get resultats
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getResultats()
-    {
-        return $this->resultats;
-    }
-
-    public function __toString() {
-        return $this->getNom().' '.$this->getPrenom();
+        return $this->eleve;
     }
 }
