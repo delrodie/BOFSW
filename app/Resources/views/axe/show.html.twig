@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Axe</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ axe.id }}</td>
+            </tr>
+            <tr>
+                <th>Intitule</th>
+                <td>{{ axe.intitule }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ axe.description }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ axe.slug }}</td>
+            </tr>
+            <tr>
+                <th>Publiepar</th>
+                <td>{{ axe.publiePar }}</td>
+            </tr>
+            <tr>
+                <th>Modifiepar</th>
+                <td>{{ axe.modifiePar }}</td>
+            </tr>
+            <tr>
+                <th>Publiele</th>
+                <td>{{ axe.publieLe }}</td>
+            </tr>
+            <tr>
+                <th>Modifiele</th>
+                <td>{{ axe.modifieLe }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_axe_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_axe_edit', { 'id': axe.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

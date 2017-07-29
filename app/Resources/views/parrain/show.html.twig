@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Parrain</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ parrain.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ parrain.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ parrain.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Tel</th>
+                <td>{{ parrain.tel }}</td>
+            </tr>
+            <tr>
+                <th>Cel</th>
+                <td>{{ parrain.cel }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ parrain.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ parrain.email }}</td>
+            </tr>
+            <tr>
+                <th>Fonction</th>
+                <td>{{ parrain.fonction }}</td>
+            </tr>
+            <tr>
+                <th>Membrefond</th>
+                <td>{{ parrain.membreFond }}</td>
+            </tr>
+            <tr>
+                <th>Civilite</th>
+                <td>{{ parrain.civilite }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ parrain.photo }}</td>
+            </tr>
+            <tr>
+                <th>Imagename</th>
+                <td>{{ parrain.imageName }}</td>
+            </tr>
+            <tr>
+                <th>Imagesize</th>
+                <td>{{ parrain.imageSize }}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{% if parrain.updatedAt %}{{ parrain.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ parrain.slug }}</td>
+            </tr>
+            <tr>
+                <th>Publiepar</th>
+                <td>{{ parrain.publiePar }}</td>
+            </tr>
+            <tr>
+                <th>Modifiepar</th>
+                <td>{{ parrain.modifiePar }}</td>
+            </tr>
+            <tr>
+                <th>Publiele</th>
+                <td>{{ parrain.publieLe }}</td>
+            </tr>
+            <tr>
+                <th>Modifiele</th>
+                <td>{{ parrain.modifieLe }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_parrain_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_parrain_edit', { 'id': parrain.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

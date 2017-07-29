@@ -109,6 +109,69 @@ vich_uploader:
             delete_on_update:   true
             delete_on_remove:   true
 
+        presentation_image:
+            uri_prefix:         /uploads/presentation
+            upload_destination: '%kernel.root_dir%/../web/uploads/presentation'
+            namer: vich_uploader.namer_uniqid
+
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+        zone_image:
+            uri_prefix:         /uploads/zone
+            upload_destination: '%kernel.root_dir%/../web/uploads/zone'
+            namer: vich_uploader.namer_uniqid
+
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+        action_image:
+            uri_prefix:         /uploads/actions
+            upload_destination: '%kernel.root_dir%/../web/uploads/actions'
+            namer: vich_uploader.namer_uniqid
+
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+        gallerie_image:
+            uri_prefix:         /uploads/gallerie
+            upload_destination: '%kernel.root_dir%/../web/uploads/gallerie'
+            namer: vich_uploader.namer_uniqid
+
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+        parrain_image:
+            uri_prefix:         /uploads/parrains
+            upload_destination: '%kernel.root_dir%/../web/uploads/parrains'
+            namer: vich_uploader.namer_uniqid
+
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+        eleve_image:
+            uri_prefix:         /uploads/eleves
+            upload_destination: '%kernel.root_dir%/../web/uploads/eleves'
+            namer: vich_uploader.namer_uniqid
+
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
+        resultat_image:
+            uri_prefix:         /uploads/bulletins
+            upload_destination: '%kernel.root_dir%/../web/uploads/bulletins'
+            namer: vich_uploader.namer_uniqid
+
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+
 liip_imagine:
     resolvers:
         default:

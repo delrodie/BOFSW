@@ -14,8 +14,29 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
+        return $this->render('default/maintenance.html.twig');
+    }
+
+    /**
+     * @Route("/accueil", name="accueil")
+     */
+    public function accueilAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('default/index.html.twig');
+    }
+
+    /**
+     * @Route("/resultat-difficulte/{id}", name="resultat_difficulte")
+     */
+    public function difficulteAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $difficulte = $em->getRepository('AppBundle:Difficulte')->findOneBy(array('resultat' => $id));
+
+        return $this->render('default/difficulte.html.twig', array(
+            'difficulte'  => $difficulte,
+        ));
     }
 }

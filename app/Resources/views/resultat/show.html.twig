@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Resultat</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ resultat.id }}</td>
+            </tr>
+            <tr>
+                <th>Annee</th>
+                <td>{{ resultat.annee }}</td>
+            </tr>
+            <tr>
+                <th>Classe</th>
+                <td>{{ resultat.classe }}</td>
+            </tr>
+            <tr>
+                <th>Periode</th>
+                <td>{{ resultat.periode }}</td>
+            </tr>
+            <tr>
+                <th>Moyenne</th>
+                <td>{{ resultat.moyenne }}</td>
+            </tr>
+            <tr>
+                <th>Rang</th>
+                <td>{{ resultat.rang }}</td>
+            </tr>
+            <tr>
+                <th>Observation</th>
+                <td>{{ resultat.observation }}</td>
+            </tr>
+            <tr>
+                <th>Imagename</th>
+                <td>{{ resultat.imageName }}</td>
+            </tr>
+            <tr>
+                <th>Imagesize</th>
+                <td>{{ resultat.imageSize }}</td>
+            </tr>
+            <tr>
+                <th>Updatedat</th>
+                <td>{% if resultat.updatedAt %}{{ resultat.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_resultat_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_resultat_edit', { 'id': resultat.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
